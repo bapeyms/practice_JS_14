@@ -73,6 +73,7 @@
         const form = document.forms[0];
         let emailHintJS = document.querySelector("#emailHint");
         let emailJS = document.querySelector("#emailID");
+        const forbiddenEmail = ["admin@example.com", "superuser@example.com", "user@example.com"];
 
         form.addEventListener("submit", function (e) {
             alert("Форма отправлена");
@@ -90,7 +91,6 @@
         });
 
         form.emailInput.addEventListener("input", function() {
-            const forbiddenEmail = ["admin@example.com", "superuser@example.com", "user@example.com"];
             if(forbiddenEmail.includes(form.emailInput.value)){
                 form.emailInput.setCustomValidity("Error! Please, enter a valid email!");
             }
@@ -99,6 +99,7 @@
             }
         });
         emailJS.addEventListener("input", function(){
+            emailHintJS.style.display = "none";
             if(forbiddenEmail.includes(form.emailInput.value)){
                 emailHintJS.style.display = "inline";
             }
