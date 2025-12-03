@@ -15,6 +15,9 @@
             width: 75px;
             display: inline-block;
         }
+        .hint{
+            display: none;
+        }
     </style>
 </head>
 
@@ -43,14 +46,22 @@
         2. В момент, когда поле ввода login получает фокус, покажите подсказку, которая находится в span#loginHint
            В момент, когда фокус получает поле ввода password - подсказку span#passwordHint
         */
-       let submitButton = document.querySelector("#reg");
+       let hintSpanLog = document.querySelector("#loginHint");
+       let hintSpanPass = document.querySelector("#passwordHint");
        let loginJS = document.querySelector("#login");
        let passwordJS = document.querySelector("#pass");
+
        const form = document.forms[0];
+       form.login.focus();
 
        form.addEventListener("submit", function(event){
-        alert("Login: ", loginJS);
-       })
+        alert("Login: " + loginJS.value + "\nPassword: " + passwordJS.value);
+       });
+
+       form.addEventListener("focus", function(event){
+        hintSpanLog.style.display = "inline";
+        hintSpanPass.style.display = "inline";
+       });
     </script>
 </body>
 
