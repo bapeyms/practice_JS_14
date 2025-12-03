@@ -50,18 +50,26 @@
        let hintSpanPass = document.querySelector("#passwordHint");
        let loginJS = document.querySelector("#login");
        let passwordJS = document.querySelector("#pass");
-
        const form = document.forms[0];
-       form.login.focus();
 
        form.addEventListener("submit", function(event){
         alert("Login: " + loginJS.value + "\nPassword: " + passwordJS.value);
        });
 
-       form.addEventListener("focus", function(event){
+       loginJS.addEventListener("focus", function() {
         hintSpanLog.style.display = "inline";
+       });
+       passwordJS.addEventListener("focus", function(){
         hintSpanPass.style.display = "inline";
        });
+
+       loginJS.addEventListener("blur", function() {
+        hintSpanLog.style.display = "none";
+       });
+       passwordJS.addEventListener("blur", function(){
+        hintSpanPass.style.display = "none";
+       });
+
     </script>
 </body>
 
